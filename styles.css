@@ -1,0 +1,43 @@
+body{
+    margin:0px;
+    background-color: #3c4552;
+    color:aliceblue;
+    text-align: center;
+}
+
+header {
+    height: 75px;
+    background-color:#1f1e1c;
+    padding: 20px;
+    font-size: large;
+}
+
+table {
+    
+   border-collapse: collapse;
+    margin: 40px auto;
+}
+
+td {
+    border: 7px solid black;
+    height: 121px;
+    width: 121px;
+    cursor: pointer;
+    }
+
+button{
+    background-color:#1f1e1c ;
+    color:white;
+    width:25%;
+    height:50px;
+    font-size: larger;
+    border: black solid 2px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
