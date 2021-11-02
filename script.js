@@ -1,6 +1,7 @@
 let x = []; //maximiser
 let o = []; //minimiser
 let xTurn = true;
+let altTurn = true;
 let winPat = [['00', '10', '20'], ['01', '11', '21'], ['02', '12', '22'], ['00', '01', '02'], ['10', '11', '12'], ['20', '21', '22'], ['00', '11', '22'], ['02', '11', '20']];
 const tableR = document.getElementsByClassName('tableR');
 const button = document.getElementById('btn')
@@ -46,6 +47,26 @@ for (let i = 0; i <= 2; i++) {
         })
     }
 }
+
+
+//if AI aka "o" has got the first move to make
+document.addEventListener('onReset', function () {
+    if (!altTurn) {
+        //make a random move on the board
+        let random1 = String(Math.floor(Math.random() * 3))
+        let random2 = String(Math.floor(Math.random() * 3))
+        let randMoveSet = random1 + random2
+
+        img = document.createElement('img');
+        img.src = 'images/o.png';
+        o.push(randMoveSet)
+        cell = document.getElementById(randMoveSet)
+        cell.append(img)
+        xTurn = true
+    }
+})
+
+
 const td = document.getElementsByTagName('td')
 button.addEventListener('click', () => { reset(); });
 
@@ -147,8 +168,12 @@ function findBestMove() {
 function reset() {
     x = [];
     o = [];
-    for (let item of td) {
+    for (let item of td)
         item.textContent = ''
-    }
+    altTurn = !altTurn
+    //custom event
+    const event = new Event('onReset');
+    document.dispatchEvent(event)
+
 }
 
