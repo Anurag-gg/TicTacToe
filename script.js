@@ -170,7 +170,8 @@ function findBestMove() {
 
 }
 function reset(result) {
-    alert(result)
+    if (result)
+        alert(result)
     x = [];
     o = [];
     for (let item of td)
