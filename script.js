@@ -42,12 +42,12 @@ function checkState() {
     //check if o wins
     for (let i = 0; i < winPat.length; i++)
         if (winPat[i].every(element => o.includes(element))) {
-            setTimeout(reset, 100)
+            setTimeout(function () { reset("O wins") }, 100)
         }
-    //check if draw
-    if (x.length + o.length > 8) {
-        setTimeout(reset, 100)
-    }
+        //check if draw
+        else if (x.length + o.length > 8) {
+            setTimeout(function () { reset("Draw") }, 100)
+        }
 }
 
 
@@ -167,8 +167,8 @@ function findBestMove() {
     return bestMoveSet
 
 }
-function reset() {
-    alert("yeah")
+function reset(result) {
+    alert(result)
     x = [];
     o = [];
     for (let item of td)
