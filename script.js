@@ -22,29 +22,31 @@ for (let i = 0; i <= 2; i++) {
 
                 //find best move for o and add image
                 bestMoveSet = findBestMove()
+                const photo = new Image()
                 img = document.createElement('img');
-                img.src = 'images/o.png';
+                photo.src = 'images/o.png';
+                img.src = photo.src
                 o.push(bestMoveSet)
                 cell = document.getElementById(bestMoveSet)
                 try { cell.append(img) }
                 catch { }
                 xTurn = true
-
-
-
-                //check if o wins
-                for (let i = 0; i < winPat.length; i++)
-                    if (winPat[i].every(element => o.includes(element))) {
-                        alert("O wins")
-                        reset()
-                    }
-                //check if draw
-                if (x.length + o.length > 8) {
-                    alert("Draw")
-                    reset()
-                }
+                photo.addEventListener('load', checkState, false)
             }
         })
+    }
+}
+
+
+function checkState() {
+    //check if o wins
+    for (let i = 0; i < winPat.length; i++)
+        if (winPat[i].every(element => o.includes(element))) {
+            setTimeout(reset, 100)
+        }
+    //check if draw
+    if (x.length + o.length > 8) {
+        setTimeout(reset, 100)
     }
 }
 
@@ -166,6 +168,7 @@ function findBestMove() {
 
 }
 function reset() {
+    alert("yeah")
     x = [];
     o = [];
     for (let item of td)
