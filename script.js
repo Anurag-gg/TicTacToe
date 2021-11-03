@@ -43,10 +43,12 @@ function checkState() {
     for (let i = 0; i < winPat.length; i++)
         if (winPat[i].every(element => o.includes(element))) {
             setTimeout(function () { reset("O wins") }, 100)
+            break
         }
         //check if draw
         else if (x.length + o.length > 8) {
             setTimeout(function () { reset("Draw") }, 100)
+            break
         }
 }
 
